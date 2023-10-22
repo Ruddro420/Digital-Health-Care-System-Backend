@@ -11,6 +11,7 @@ class ManageDoctors extends Controller
      // Store Function
      public function store(Request $request){
         $info = new Doctor();
+        $info->uid = $request->uid;
         $info->doctors_name = $request->doctors_name;
         $info->phone_no = $request->phone_no;
         $info->specialist = $request->specialist;
@@ -18,7 +19,7 @@ class ManageDoctors extends Controller
         $info->address = $request->address;
         $info->state = $request->state;
         $info->zip = $request->zip;
-        $info->aggree = $request->aggree;
+        $info->aggree = 'Yes';
         $info->status = 0;
         $info->save();
 

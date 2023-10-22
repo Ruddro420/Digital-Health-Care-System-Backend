@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Medicine extends Model
 {
     protected $fillable = [
+        'uid',
         'shop_name',
         'phone_no',
         'owner_name',

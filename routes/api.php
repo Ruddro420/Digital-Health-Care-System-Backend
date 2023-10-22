@@ -28,6 +28,7 @@ use App\Http\Controllers\api\ManageEmergency;
 
  // For Blood
   Route::post('/storeBlood', [ManageBlood::class, 'store']);
+  Route::get('/getOnlyBlood', [ManageBlood::class, 'getOnly']);
   // For Ambulance
   Route::post('/storeAmbulance', [ManageAmbulance::class, 'store']);
   // For Doctors

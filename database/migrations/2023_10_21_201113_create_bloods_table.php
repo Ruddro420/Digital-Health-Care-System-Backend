@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('bloods', function (Blueprint $table) {
             $table->id();
+            $table->string('uid')->nullable();
             $table->string('donate_date')->nullable();
             $table->string('blood_group')->nullable();
             $table->string('donor_name')->nullable();
+            $table->string('phone_no')->nullable();
             $table->string('address')->nullable();
             $table->string('state')->nullable();
             $table->string('zip')->nullable();

@@ -11,13 +11,14 @@ class ManageAmbulance extends Controller
      // Store Function
      public function store(Request $request){
         $info = new Ambulance();
+        $info->uid = $request->uid;
         $info->driver_name = $request->driver_name;
         $info->phone_no = $request->phone_no;
         $info->license_no = $request->license_no;
         $info->address = $request->address;
         $info->state = $request->state;
         $info->zip = $request->zip;
-        $info->aggree = $request->aggree;
+        $info->aggree = 'Yes';
         $info->status = 0;
         $info->save();
 

@@ -11,6 +11,7 @@ class ManageMedicine extends Controller
    // Store Function
    public function store(Request $request){
     $info = new Medicine();
+    $info->uid = $request->uid;
     $info->shop_name = $request->shop_name;
     $info->phone_no = $request->phone_no;
     $info->owner_name = $request->owner_name;
@@ -18,7 +19,7 @@ class ManageMedicine extends Controller
     $info->address = $request->address;
     $info->state = $request->state;
     $info->zip = $request->zip;
-    $info->aggree = $request->aggree;
+    $info->aggree = 'Yes';
     $info->status = 0;
     $info->save();
 

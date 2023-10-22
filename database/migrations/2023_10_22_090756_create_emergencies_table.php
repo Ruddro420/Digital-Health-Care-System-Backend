@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('emergencies', function (Blueprint $table) {
             $table->id();
+            $table->string('uid')->nullable();
             $table->string('name')->nullable();
             $table->string('phone_no')->nullable();
             $table->string('address')->nullable();

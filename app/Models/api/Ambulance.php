@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ambulance extends Model
 {
     protected $fillable = [
+        'uid',
         'driver_name',
         'phone_no',
         'license_no',

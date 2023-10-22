@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ambulances', function (Blueprint $table) {
             $table->id();
+            $table->string('uid')->nullable();
             $table->string('driver_name')->nullable();
             $table->string('phone_no')->nullable();
             $table->string('license_no')->nullable();

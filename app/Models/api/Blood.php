@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Blood extends Model
 {
     protected $fillable = [
+        'uid',
         'donate_date',
         'blood_group',
         'donor_name',
@@ -18,5 +19,6 @@ class Blood extends Model
         'hepatitis',
         'aggree',
         'status',
+        'phone_no'
     ];
 }
