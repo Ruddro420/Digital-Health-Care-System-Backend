@@ -8,8 +8,9 @@ use App\Http\Controllers\Controller;
 
 class ManageDoctors extends Controller
 {
-     // Store Function
-     public function store(Request $request){
+    // Store Function
+    public function store(Request $request)
+    {
         $info = new Doctor();
         $info->uid = $request->uid;
         $info->doctors_name = $request->doctors_name;
@@ -23,16 +24,36 @@ class ManageDoctors extends Controller
         $info->status = 0;
         $info->save();
 
-        if($info){
+        if ($info) {
             return response()->json([
                 'status' => 200,
                 'message' => 'Doctors Info Created Successfuly'
-            ],200);
-        }else{
+            ], 200);
+        } else {
             return response()->json([
                 'status' => 500,
                 'message' => 'Something Went Wrong'
-            ],500);
+            ], 500);
+        }
+    }
+    // get only data
+    public function getOnly($id)
+    {
+
+        $info = Doctor::where('uid', $id)->get();
+        // Check Data is avaiable or not
+        if ($info->count() > 0) {
+            $data = [
+                'status' => 200,
+                'info' => $info
+            ];
+            return response()->json($data, 200);
+        } else {
+            $data = [
+                'status' => 404,
+                'message' => 'No Records Found'
+            ];
+            return response()->json($data, 404);
         }
     }
 }

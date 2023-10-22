@@ -10,32 +10,21 @@ use App\Http\Controllers\api\ManageAmbulance;
 use App\Http\Controllers\api\ManageEmergency;
 
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
-/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
- */
-
- // For Blood
-  Route::post('/storeBlood', [ManageBlood::class, 'store']);
-  Route::get('/getOnlyBlood', [ManageBlood::class, 'getOnly']);
-  // For Ambulance
-  Route::post('/storeAmbulance', [ManageAmbulance::class, 'store']);
-  // For Doctors
-  Route::post('/storeDoctor', [ManageDoctors::class, 'store']);
-  // For Emergency
-  Route::post('/storeEmergency', [ManageEmergency::class, 'store']);
-  // For Doctors
-  Route::post('/storeHospital', [ManageHospital::class, 'store']);
-  // For Medicine
-  Route::post('/storeMedicine', [ManageMedicine::class, 'store']);
+// For Blood
+Route::post('/storeBlood', [ManageBlood::class, 'store']);
+Route::get('/getOnlyBlood/{id}', [ManageBlood::class, 'getOnly']);
+// For Ambulance
+Route::post('/storeAmbulance', [ManageAmbulance::class, 'store']);
+Route::get('/getOnlyAmbulance/{id}', [ManageAmbulance::class, 'getOnly']);
+// For Doctors
+Route::post('/storeDoctor', [ManageDoctors::class, 'store']);
+Route::get('/getOnlyDoctor/{id}', [ManageDoctors::class, 'getOnly']);
+// For Emergency
+Route::post('/storeEmergency', [ManageEmergency::class, 'store']);
+Route::get('/getOnlyEmergency/{id}', [ManageEmergency::class, 'getOnly']);
+// For Doctors
+Route::post('/storeHospital', [ManageHospital::class, 'store']);
+Route::get('/getOnlyHospital/{id}', [ManageHospital::class, 'getOnly']);
+// For Medicine
+Route::post('/storeMedicine', [ManageMedicine::class, 'store']);
+Route::get('/getOnlyMedicine/{id}', [ManageMedicine::class, 'getOnly']);

@@ -34,4 +34,23 @@ class ManageAmbulance extends Controller
             ],500);
         }
     }
+     // get only data
+     public function getOnly($id){
+
+        $ambulanceInfo = Ambulance::where('uid', $id)->get();
+        // Check Data is avaiable or not
+        if($ambulanceInfo->count() > 0){
+            $data = [
+                'status' => 200,
+                'info' => $ambulanceInfo
+            ];
+            return response()->json($data,200);
+        }else{
+            $data = [
+                'status' => 404,
+                'message' => 'No Records Found'
+            ];
+            return response()->json($data,404);
+        }   
+    }
 }

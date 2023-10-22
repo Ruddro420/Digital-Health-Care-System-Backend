@@ -8,8 +8,9 @@ use App\Http\Controllers\Controller;
 
 class ManageHospital extends Controller
 {
-     // Store Function
-     public function store(Request $request){
+    // Store Function
+    public function store(Request $request)
+    {
         $info = new Hospital();
         $info->uid = $request->uid;
         $info->hospital_name = $request->hospital_name;
@@ -22,16 +23,36 @@ class ManageHospital extends Controller
         $info->status = 0;
         $info->save();
 
-        if($info){
+        if ($info) {
             return response()->json([
                 'status' => 200,
                 'message' => 'Hospital Info Created Successfuly'
-            ],200);
-        }else{
+            ], 200);
+        } else {
             return response()->json([
                 'status' => 500,
                 'message' => 'Something Went Wrong'
-            ],500);
+            ], 500);
+        }
+    }
+    // get only data
+    public function getOnly($id)
+    {
+
+        $info = Hospital::where('uid', $id)->get();
+        // Check Data is avaiable or not
+        if ($info->count() > 0) {
+            $data = [
+                'status' => 200,
+                'info' => $info
+            ];
+            return response()->json($data, 200);
+        } else {
+            $data = [
+                'status' => 404,
+                'message' => 'No Records Found'
+            ];
+            return response()->json($data, 404);
         }
     }
 }
