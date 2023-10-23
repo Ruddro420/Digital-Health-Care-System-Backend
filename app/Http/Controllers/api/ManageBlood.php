@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 
 class ManageBlood extends Controller
 {
-     // Store Function
-     public function store(Request $request){
+    // Store Function
+    public function store(Request $request)
+    {
         $info = new Blood();
         $info->uid = $request->uid;
         $info->donate_date = $request->donate_date;
@@ -25,35 +26,55 @@ class ManageBlood extends Controller
         $info->status = 0;
         $info->save();
 
-        if($info){
+        if ($info) {
             return response()->json([
                 'status' => 200,
                 'message' => 'Blood Info Created Successfuly'
-            ],200);
-        }else{
+            ], 200);
+        } else {
             return response()->json([
                 'status' => 500,
                 'message' => 'Something Went Wrong'
-            ],500);
+            ], 500);
         }
     }
     // get only data
-    public function getOnly($id){
+    public function getOnly($id)
+    {
 
         $bloodInfo = Blood::where('uid', $id)->get();
         // Check Data is avaiable or not
-        if($bloodInfo->count() > 0){
+        if ($bloodInfo->count() > 0) {
             $data = [
                 'status' => 200,
                 'info' => $bloodInfo
             ];
-            return response()->json($data,200);
-        }else{
+            return response()->json($data, 200);
+        } else {
             $data = [
                 'status' => 404,
                 'message' => 'No Records Found'
             ];
-            return response()->json($data,404);
-        }   
+            return response()->json($data, 404);
+        }
+    }
+    // get All data
+    public function getAll()
+    {
+        $info = Blood::where('status', 1)->get();
+        // Check Data is avaiable or not
+        if ($info->count() > 0) {
+            $data = [
+                'status' => 200,
+                'info' => $info
+            ];
+            return response()->json($data, 200);
+        } else {
+            $data = [
+                'status' => 404,
+                'message' => 'No Records Found'
+            ];
+            return response()->json($data, 404);
+        }
     }
 }

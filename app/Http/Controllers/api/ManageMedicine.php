@@ -56,4 +56,23 @@ class ManageMedicine extends Controller
             return response()->json($data, 404);
         }
     }
+    // get All data
+    public function getAll()
+    {
+        $info = Medicine::where('status', 1)->get();
+        // Check Data is avaiable or not
+        if ($info->count() > 0) {
+            $data = [
+                'status' => 200,
+                'info' => $info
+            ];
+            return response()->json($data, 200);
+        } else {
+            $data = [
+                'status' => 404,
+                'message' => 'No Records Found'
+            ];
+            return response()->json($data, 404);
+        }
+    }
 }
