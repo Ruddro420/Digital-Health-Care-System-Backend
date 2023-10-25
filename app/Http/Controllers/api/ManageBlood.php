@@ -77,4 +77,24 @@ class ManageBlood extends Controller
             return response()->json($data, 404);
         }
     }
+    // Update data
+    public function updateData($id)
+    {
+
+        $info = Blood::find($id);
+        $info->status = '1';
+        $info->save();
+        // Check Data is avaiable or not
+        if ($info) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'User Info Update Successfuly'
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'message' => 'Something Went Wrong'
+            ], 500);
+        }
+    }
 }

@@ -14,6 +14,7 @@ use App\Http\Controllers\api\ManageEmergency;
 Route::post('/storeBlood', [ManageBlood::class, 'store']);
 Route::get('/getOnlyBlood/{id}', [ManageBlood::class, 'getOnly']);
 Route::get('/getBlood', [ManageBlood::class, 'getAll']);
+Route::post('/updateData/{id}', [ManageBlood::class, 'updateData']);
 // For Ambulance
 Route::post('/storeAmbulance', [ManageAmbulance::class, 'store']);
 Route::get('/getOnlyAmbulance/{id}', [ManageAmbulance::class, 'getOnly']);
