@@ -74,4 +74,48 @@ class ManageAmbulance extends Controller
             return response()->json($data, 404);
         }
     }
+    // for get supper admin data
+    public function getSuperAdminData()
+    {
+        $info = Ambulance::all();
+        // Check Data is avaiable or not
+        if ($info->count() > 0) {
+            $data = [
+                'status' => 200,
+                'info' => $info
+            ];
+            return response()->json($data, 200);
+        } else {
+            $data = [
+                'status' => 404,
+                'message' => 'No Records Found'
+            ];
+            return response()->json($data, 404);
+        }
+    }
+    // Update data
+    public function updateData($id)
+    {
+        $info = Ambulance::find($id);
+        /*  $info->status = '1'; */
+
+        if ($info->status == '1') {
+            $info->status = '0';
+        } else if ($info->status == '0') {
+            $info->status = '1';
+        }
+        $info->save();
+        // Check Data is avaiable or not
+        if ($info) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Update Successfuly'
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'message' => 'Something Went Wrong'
+            ], 500);
+        }
+    }
 }
